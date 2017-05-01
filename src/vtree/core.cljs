@@ -26,8 +26,8 @@
   (if (empty? levels)
     ""
     (str (when (> (count levels) 1)
-           (->> (map {true "    "
-                      false "│   "}
+           (->> (map {true  "    "
+                      false "│   "}
                      (rest levels))
                 clojure.string/join))
          (if last?
