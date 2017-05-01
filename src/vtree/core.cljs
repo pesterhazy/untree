@@ -45,12 +45,24 @@
            (print-tree more (conj levels last?)))
          (println (str (indent last? levels) node)))))))
 
-(defn run []
-  (let [xs (->> (lumo.io/slurp "tree.in")
-                (clojure.string/split-lines)
+(defn process [lines]
+  (let [xs (->> lines
                 (mapv #(clojure.string/split % "/")))
         result (banana xs)]
     (print-tree result)))
+
+(defn run []
+  (let [rl (.createInterface (js/require "readline")
+                             #js{:input js/process.stdin})
+        lines (atom [])]
+    (.on rl
+         "line"
+         (fn [line]
+           (swap! lines conj line)))
+    (.on rl
+         "close"
+         (fn []
+           (process @lines)))))
 
 (defn -main [& more]
   (init)
