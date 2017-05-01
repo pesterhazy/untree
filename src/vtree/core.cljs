@@ -22,21 +22,21 @@
                 x)]
         (recur tail (conj acc v))))))
 
-(defn indent [level]
+(defn indent [idx level]
   (when (pos? level)
-    "└──"
-    #_"├──"
-    ))
+    (if (zero? idx)
+      "├──"
+      "└──")))
 
 (defn print-tree
   ([nodes] (print-tree nodes 0))
   ([nodes indent-level]
-   (doseq [node nodes]
+   (doseq [[idx node] (map-indexed vector nodes)]
      (if (vector? node)
        (let [[x & more] node]
-         (println (str (indent indent-level) x))
+         (println (str (indent idx indent-level) x))
          (print-tree more (inc indent-level)))
-       (println (str (indent indent-level) node))))))
+       (println (str (indent idx indent-level) node))))))
 
 (defn run []
   (let [xs (->> (lumo.io/slurp "tree.in")
