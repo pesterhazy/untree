@@ -19,22 +19,18 @@
             (recur tail prefix (conj acc (into [(last e)] (banana (rest ) e)))))
           acc))))
 
-(declare banana)
-
-(defn banana* [xs]
-  (prn [:* xs])
-  (map banana xs))
-
 (defn banana [xs]
+  (prn [:banana xs])
   (loop [xs xs
          acc []]
     (if (empty? xs)
       acc
       (let [x (ffirst xs)
+            _ (prn [:ffirst x])
             [head tail] (split-with (partial prefix-of? [x]) xs)
             more (->> head (map next) (remove empty?))
             v (if (seq more)
-                (into [x] (banana* more))
+                (into [x] (map banana more))
                 x)]
         (recur tail (conj acc v))))))
 
