@@ -24,9 +24,9 @@
 
 (defn indent [level]
   (when (pos? level)
-    (->> "\t"
-         (repeat level)
-         clojure.string/join)))
+    "└──"
+    #_"├──"
+    ))
 
 (defn print-tree
   ([nodes] (print-tree nodes 0))
@@ -39,7 +39,7 @@
        (println (str (indent indent-level) node))))))
 
 (defn run []
-  (let [xs (->> (lumo.io/slurp "tree")
+  (let [xs (->> (lumo.io/slurp "tree.in")
                 (clojure.string/split-lines)
                 (mapv #(clojure.string/split % "/")))
         result (banana xs)]
@@ -47,5 +47,4 @@
 
 (defn -main [& more]
   (init)
-  (println)
   (run))
