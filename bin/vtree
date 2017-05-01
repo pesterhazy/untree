@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-export UNRAVEL_HOME="${UNRAVEL_HOME:-$(npm -g root)/unravel-repl}"
+export UNRAVEL_HOME="${UNRAVEL_HOME:-$(npm -g root)/vtree-repl}"
 export NODE_PATH="${UNRAVEL_HOME}/node_modules"
 
-unravel_version="0.2.1"
-dot_dir="$HOME/.unravel"
-cache_dir="${dot_dir}/cache/${unravel_version}"
+vtree_version="0.2.1"
+dot_dir="$HOME/.vtree"
+cache_dir="${dot_dir}/cache/${vtree_version}"
 
 mkdir -p "$cache_dir"
 
 exec "${UNRAVEL_HOME}/node_modules/lumo-cljs/bin/lumo" \
      -c "${UNRAVEL_HOME}/src" \
      -k "${cache_dir}" \
-     -m unravel.core \
+     -m vtree.core \
      "$@"

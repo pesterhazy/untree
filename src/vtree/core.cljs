@@ -1,9 +1,9 @@
-(ns unravel.core
+(ns vtree.core
   (:require [clojure.string]
-            [unravel.log :as ul]
-            [unravel.version :as uv]
-            [unravel.tags :as ut]
-            [unravel.loop :as uo])
+            [vtree.log :as ul]
+            [vtree.version :as uv]
+            [vtree.tags :as ut]
+            [vtree.loop :as uo])
   (:import [goog.string StringBuffer]))
 
 (defn fail [message]
@@ -35,5 +35,5 @@
   (init)
   (let [[host port :as args] (parse more)]
     (when-not (= 2 (count args))
-      (fail "Syntax: unravel [--debug] <host> <port>\n        unravel --version"))
+      (fail "Syntax: vtree [--debug] <host> <port>\n        vtree --version"))
     (uo/start host port)))

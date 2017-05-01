@@ -1,13 +1,13 @@
 {
-  "name": "unravel-repl",
+  "name": "vtree-repl",
   "version": "0.2.1",
   "description": "CLI REPL client for Clojure based on unrepl protocol",
   "bin": {
-    "unravel": "bin/unravel"
+    "vtree": "bin/vtree"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:pesterhazy/unravel.git"
+    "url": "git@github.com:pesterhazy/vtree.git"
   },
   "keywords": [
     "clojure",
@@ -19,11 +19,11 @@
   "author": "Paulus Esterhazy",
   "license": "EPL-1.0",
   "bugs": {
-    "url": "https://github.com/pesterhazy/unravel/issues"
+    "url": "https://github.com/pesterhazy/vtree/issues"
   },
-  "homepage": "https://github.com/pesterhazy/unravel",
+  "homepage": "https://github.com/pesterhazy/vtree",
   "scripts": {
-    "start": "lumo -K -c src -m unravel.core"
+    "start": "lumo -K -c src -m vtree.core"
   },
   "dependencies": {
     "historic-readline": "^1.0.8",
