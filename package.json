@@ -1,7 +1,7 @@
 {
-  "name": "vtree-repl",
-  "version": "0.2.1",
-  "description": "CLI REPL client for Clojure based on unrepl protocol",
+  "name": "vtree",
+  "version": "0.1.0",
+  "description": "Print ASCII trees in terminal",
   "bin": {
     "vtree": "bin/vtree"
   },
@@ -10,11 +10,9 @@
     "url": "git@github.com:pesterhazy/vtree.git"
   },
   "keywords": [
-    "clojure",
-    "clojurescript",
-    "repl",
-    "cli",
-    "client"
+    "tree",
+    "terminal",
+    "ascii"
   ],
   "author": "Paulus Esterhazy",
   "license": "EPL-1.0",
@@ -26,8 +24,6 @@
     "start": "lumo -K -c src -m vtree.core"
   },
   "dependencies": {
-    "historic-readline": "^1.0.8",
-    "lumo-cljs": "1.2.0",
-    "os-homedir": "^1.0.2"
+    "lumo-cljs": "1.2.0"
   }
 }
