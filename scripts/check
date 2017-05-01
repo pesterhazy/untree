@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail && cd "$(dirname "${BASH_SOURCE[0]}")/.."
+
+(cd test && find * > ../tree.in && tree --noreport * > ../tree.out && cat ../tree.out && cd .. && run > tree.result && diff tree.out tree.result)
