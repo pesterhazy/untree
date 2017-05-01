@@ -22,26 +22,28 @@
                 x)]
         (recur tail (conj acc v))))))
 
-(defn indent [idx level]
-  (if (zero? level)
+(defn indent [last? levels]
+  (if (empty? levels)
     ""
-    (str (when (> level 1)
-           (->> "│   "
-                (repeat (dec level))
+    (str (when (> (count levels) 1)
+           (->> (map {true "    "
+                      false "│   "}
+                     (rest levels))
                 clojure.string/join))
-         (if (zero? idx)
-           "├── "
-           "└── "))))
+         (if last?
+           "└── "
+           "├── "))))
 
 (defn print-tree
-  ([nodes] (print-tree nodes 0))
-  ([nodes indent-level]
+  ([nodes] (print-tree nodes []))
+  ([nodes levels]
    (doseq [[idx node] (map-indexed vector nodes)]
-     (if (vector? node)
-       (let [[x & more] node]
-         (println (str (indent idx indent-level) x))
-         (print-tree more (inc indent-level)))
-       (println (str (indent idx indent-level) node))))))
+     (let [last? (= idx (dec (count nodes)))]
+       (if (vector? node)
+         (let [[x & more] node]
+           (println (str (indent last? levels) x))
+           (print-tree more (conj levels last?)))
+         (println (str (indent last? levels) node)))))))
 
 (defn run []
   (let [xs (->> (lumo.io/slurp "tree.in")
