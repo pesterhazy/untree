@@ -23,10 +23,15 @@
         (recur tail (conj acc v))))))
 
 (defn indent [idx level]
-  (when (pos? level)
-    (if (zero? idx)
-      "├──"
-      "└──")))
+  (if (zero? level)
+    ""
+    (str (when (> level 1)
+           (->> "│   "
+                (repeat (dec level))
+                clojure.string/join))
+         (if (zero? idx)
+           "├── "
+           "└── "))))
 
 (defn print-tree
   ([nodes] (print-tree nodes 0))
