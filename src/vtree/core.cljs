@@ -3,13 +3,18 @@
             [clojure.pprint :refer [pprint]]
             [lumo.io]))
 
+(def fs (js/require "fs"))
+
 (defn init [])
+
+(defn dir? [fname]
+  (.isDirectory (.fstatSync fs (.openSync fs fname "r"))))
 
 (defn prefix-of? [a b]
   (let [n (count a)]
     (= (take n a) (take n b))))
 
-(defn banana [xs]
+(defn seq->tree [xs]
   (loop [xs xs
          acc []]
     (if (empty? xs)
@@ -18,7 +23,7 @@
             [head tail] (split-with (partial prefix-of? [x]) xs)
             more (->> head (map next) (remove empty?))
             v (if (seq more)
-                (into [x] (banana more))
+                (into [x] (seq->tree more))
                 x)]
         (recur tail (conj acc v))))))
 
@@ -45,11 +50,19 @@
            (print-tree more (conj levels last?)))
          (println (str (indent last? levels) node)))))))
 
+(defn transform [fname]
+  (let [fname (clojure.string/replace fname #"/*$" "")
+        segments (vec (clojure.string/split fname "/"))]
+    #_(if (dir? fname)
+        (update segments (dec (count segments)) #(str % "/"))
+        segments)
+    segments))
+
 (defn process [lines]
-  (let [xs (->> lines
-                (mapv #(clojure.string/split % "/")))
-        result (banana xs)]
-    (print-tree result)))
+  (->> lines
+       (map transform)
+       seq->tree
+       print-tree))
 
 (defn run []
   (let [rl (.createInterface (js/require "readline")
@@ -65,5 +78,4 @@
            (process @lines)))))
 
 (defn -main [& more]
-  (init)
   (run))
