@@ -1,23 +1,23 @@
-# vtree
+# untree
 
 Print trees in the terminal
 
-Like Unix's standard tree(1), vtree prints a directory tree. Unlike tree, however, it reads the list of files and directories to show from stdin.
+Like Unix's standard tree(1), untree prints a directory tree. Unlike tree, however, it reads the list of files and directories to show from stdin.
 
 ## Instllation
 
 ```
-npm install -g vtree
+npm install -g untree
 ```
 
 ## Examples
 
 ```
-$ git ls-files | vtree
+$ git ls-files | untree
 .editorconfig
 .gitignore
 bin
-└── vtree
+└── untree
 dev
 └── cljs
     └── user.cljs
@@ -27,7 +27,7 @@ scripts
 ├── dev
 └── run
 src
-└── vtree
+└── untree
     └── core.cljs
 tree.in
 tree.out
@@ -36,5 +36,5 @@ tree.out
 Other examples
 
 ```
-find /etc -follow | vtree
+find /etc -follow | untree
 ```

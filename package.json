@@ -1,13 +1,13 @@
 {
-  "name": "vtree",
+  "name": "untree",
   "version": "0.1.0",
   "description": "Print ASCII trees in terminal",
   "bin": {
-    "vtree": "bin/vtree"
+    "untree": "bin/untree"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:pesterhazy/vtree.git"
+    "url": "git@github.com:pesterhazy/untree.git"
   },
   "keywords": [
     "tree",
@@ -17,11 +17,11 @@
   "author": "Paulus Esterhazy",
   "license": "EPL-1.0",
   "bugs": {
-    "url": "https://github.com/pesterhazy/vtree/issues"
+    "url": "https://github.com/pesterhazy/untree/issues"
   },
-  "homepage": "https://github.com/pesterhazy/vtree",
+  "homepage": "https://github.com/pesterhazy/untree",
   "scripts": {
-    "start": "lumo -K -c src -m vtree.core"
+    "start": "lumo -K -c src -m untree.core"
   },
   "dependencies": {
     "lumo-cljs": "1.2.0"

@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-export VTREE_HOME="${VTREE_HOME:-$(npm -g root)/vtree}"
-export NODE_PATH="${VTREE_HOME}/node_modules"
+export UNTREE_HOME="${UNTREE_HOME:-$(npm -g root)/untree}"
+export NODE_PATH="${UNTREE_HOME}/node_modules"
 
-vtree_version="0.2.1"
-dot_dir="$HOME/.vtree"
-cache_dir="${dot_dir}/cache/${vtree_version}"
+untree_version="0.2.1"
+dot_dir="$HOME/.untree"
+cache_dir="${dot_dir}/cache/${untree_version}"
 
 mkdir -p "$cache_dir"
 
-exec "${VTREE_HOME}/node_modules/lumo-cljs/bin/lumo" \
-     -c "${VTREE_HOME}/src" \
+exec "${UNTREE_HOME}/node_modules/lumo-cljs/bin/lumo" \
+     -c "${UNTREE_HOME}/src" \
      -k "${cache_dir}" \
-     -m vtree.core \
+     -m untree.core \
      "$@"

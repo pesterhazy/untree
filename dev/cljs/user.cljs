@@ -1,5 +1,5 @@
 (ns cljs.user
-  (:require [vtree.core :as uc]
-            [vtree.loop :as ul]))
+  (:require [untree.core :as uc]
+            [untree.loop :as ul]))
 
-(vtree.core/init)
+(untree.core/init)
