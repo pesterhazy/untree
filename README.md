@@ -4,7 +4,7 @@ Print trees in the terminal
 
 Like Unix's standard tree(1), untree prints a directory tree. Unlike tree, however, it reads the list of files and directories to show from stdin.
 
-## Instllation
+## Installation
 
 ```
 npm install -g untree
