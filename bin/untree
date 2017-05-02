@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export VTREE_HOME="${VTREE_HOME:-$(npm -g root)/vtree-repl}"
+export VTREE_HOME="${VTREE_HOME:-$(npm -g root)/vtree}"
 export NODE_PATH="${VTREE_HOME}/node_modules"
 
 vtree_version="0.2.1"
